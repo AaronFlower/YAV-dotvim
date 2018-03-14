@@ -127,15 +127,25 @@ set viminfo='100,f1
 " <### vim-plug plugins mananger ###> --- {{{
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
+
 " Airline use :AirlineTheme <theme>
 " To set in .vimrc, use let g:airline_theme='<theme>'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" molokai theme
+Plug 'fatih/molokai'
+
 call plug#end()
 " }}}
 
 " Airline
 let g:airline_theme='luna'
+
+" molokai color scheme
+let g:rehash256=1
+let g:molokai_original=1
+color molokai
 
 " <### Editor KeyMap Begin###> ----{{{
 " Set mapleader, maplocalleader
