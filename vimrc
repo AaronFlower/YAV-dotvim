@@ -124,6 +124,13 @@ set dir=/private/tmp
 " Save marks when exit
 set viminfo='100,f1
 
+" <### vim-plug plugins mananger ###> --- {{{
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
+
+call plug#end()
+" }}}
+
 " <### Editor KeyMap Begin###> ----{{{
 " Set mapleader, maplocalleader
 let mapleader=","
