@@ -70,6 +70,8 @@ Plug 'vim-airline/vim-airline-themes'
 " molokai theme
 Plug 'fatih/molokai'
 
+" git fugitive
+Plug 'tpope/vim-fugitive'
 call plug#end()
 " }}}
 
