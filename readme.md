@@ -1,4 +1,4 @@
-##
+## Yet Another Vimrc configuration file.
 
 ### ~/.vim/colors/
 
@@ -25,6 +25,4 @@ until it's actually needed. We'll cover this in more detail later when we
 refactor our plugin's code to take advantage of it.
 
 ### ~/.vim/doc/
-
-
 
