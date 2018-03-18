@@ -31,7 +31,7 @@ set incsearch		" do incremental searching
 if &term =~ "xterm.*"
     let &t_ti = &t_ti . "\e[?2004h"
     let &t_te = "\e[?2004l" . &t_te
-    function XTermPasteBegin(ret)
+    function! XTermPasteBegin(ret)
         set pastetoggle=<Esc>[201~
         set paste
         return a:ret
@@ -84,8 +84,13 @@ Plug 'vim-airline/vim-airline-themes'
 " molokai theme
 Plug 'fatih/molokai'
 
+" fzf
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+
 " git fugitive
 Plug 'tpope/vim-fugitive'
+
 call plug#end()
 " }}}
 
@@ -142,9 +147,27 @@ nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 " Wrap word with () 
 nnoremap <leader>( viw<esc>a)<esc>bi(<esc>lel
 
-" Open file with zfz
-nnoremap <c-p> :Files<cr>
-inoremap <c-p> :Files<cr>
+" Open file with fzf
+function! FzfOpenFiles()
+	let is_git = system('git status')
+	if v:shell_error
+		:Files
+	else
+		:GitFiles
+	endif
+endfunction
+
+nnoremap <c-p> :call FzfOpenFiles()<cr>
+inoremap <c-p> :call FzfOpenFiles()<cr>
+nnoremap <c-b> :Buffers<cr>
+nnoremap <leader>, :Commands<cr>
+nnoremap <c-g>h :Ag<cr>
+
+" fzf insert mode
+"inoremap <c-x><c-k> <plug>(fzf-complete-word)
+"inoremap <c-x><c-f> <plug>(fzf-complete-path)
+"inoremap <c-x><c-j> <plug>(fzf-complete-file-ag)
+"inoremap <c-x><c-l> <plug>(fzf-complete-line)
 
 " quickfix
 noremap <c-n> :cnext<cr>
