@@ -153,7 +153,9 @@ function! FzfOpenFiles()
 	if v:shell_error
 		:Files
 	else
-		:GitFiles
+		" :GitFiles
+		" if you want to use preview for gitfiles
+		call fzf#vim#gitfiles('', fzf#vim#with_preview('right'))
 	endif
 endfunction
 
@@ -163,6 +165,26 @@ nnoremap <c-b> :Buffers<cr>
 nnoremap <leader>, :Commands<cr>
 nnoremap <c-g>h :Ag<cr>
 
+" custom fzf commands
+function! s:change_branch(e)
+	let res = system("git checkout" . a:e)
+	:e!
+	:AirlineRefresh
+	echom "Changed branch to " . a:e
+endfunction
+
+command! Gbranch call fzf#run(
+	\{
+	\ 'source': 'git branch',
+	\ 'sink': function('<sid>change_branch'),
+	\ 'options': '-m',
+	\ 'down': '20%'
+	\})
+
+" use coderay/rougify to preview file
+" need coderay/rougify installed
+" only for Files
+let g:fzf_files_options = '--preview "rougify {} | head -'.&lines.'"'
 " fzf insert mode
 "inoremap <c-x><c-k> <plug>(fzf-complete-word)
 "inoremap <c-x><c-f> <plug>(fzf-complete-path)
