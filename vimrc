@@ -93,15 +93,24 @@ Plug 'junegunn/fzf.vim'
 " git fugitive
 Plug 'tpope/vim-fugitive'
 
+" nerdtree
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 " php
 Plug 'StanAngeloff/php.vim'
 Plug 'vim-syntastic/syntastic'
-
-" php
 Plug 'vim-scripts/indentpython.vim'
+
+" python
+" Also add PEP8 checking with this nifty little plugin
+Plug 'nvie/vim-flake8'
 
 " multiple-line-editor
 Plug 'terryma/vim-multiple-cursors'
+
+" YCM
+Plug 'Valloric/YouCompleteMe'
 
 call plug#end()
 " }}}
@@ -268,9 +277,25 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" for python
+let python_highlight_all=1
+
 " }}}
+
+" YCM config {{{
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" }}}
+
+" nerdtree config {{{
+nnoremap <leader>t :NERDTreeToggle<cr>
+" Close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"}}}
 
 
 " source python config
 source ~/.vim/custom/py.vimrc
+
+syntax on
 
