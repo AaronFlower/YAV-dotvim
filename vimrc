@@ -5,6 +5,8 @@ echo ">^.^<"
 filetype plugin indent on
 syntax on
 
+set encoding=utf-8
+
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
   finish
@@ -91,6 +93,16 @@ Plug 'junegunn/fzf.vim'
 " git fugitive
 Plug 'tpope/vim-fugitive'
 
+" php
+Plug 'StanAngeloff/php.vim'
+Plug 'vim-syntastic/syntastic'
+
+" php
+Plug 'vim-scripts/indentpython.vim'
+
+" multiple-line-editor
+Plug 'terryma/vim-multiple-cursors'
+
 call plug#end()
 " }}}
 
@@ -119,8 +131,8 @@ nnoremap <leader>q :q<cr>
 " edit your vimrc
 nnoremap <leader>ev :tabedit $MYVIMRC<cr>
 
-" source your vimrc
-nnoremap <leader>sv :source $MYVIMRC<cr>
+" reload your vimrc
+nnoremap <leader>rv :source $MYVIMRC<cr>
 
 " switch current line with next line
 nnoremap - ddp
@@ -192,9 +204,9 @@ let g:fzf_files_options = '--preview "rougify {} | head -'.&lines.'"'
 "inoremap <c-x><c-l> <plug>(fzf-complete-line)
 
 " quickfix
-noremap <c-n> :cnext<cr>
-noremap <c-m> :cprevious<cr>
-nnoremap <leader>a :cclose<cr>
+" noremap <c-n> :cnext<cr>
+" noremap <c-m> :cprevious<cr>
+" nnoremap <leader>a :cclose<cr>
 
 " Go
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
@@ -246,4 +258,19 @@ let g:go_metalinter_autosave = 1
 let g:go_auto_type_info = 1
 set updatetime=100
 " }}}
+
+" vim-syntastic/syntastic ----{{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" }}}
+
+
+" source python config
+source ~/.vim/custom/py.vimrc
 
