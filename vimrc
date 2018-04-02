@@ -1,10 +1,12 @@
 " A vimrc file maintained by AaronFlower
 
-echo ">^.^<"
+echom ">^.^<"
+
+if has('python3')
+	" echom 'python3'
+endif
 
 filetype plugin indent on
-syntax on
-
 set encoding=utf-8
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -19,7 +21,7 @@ set nocompatible
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-if has("vms")
+if has('vms')
   set nobackup		" do not keep a backup file, use versions instead
 else
   set backup		" keep a backup file
@@ -92,6 +94,7 @@ Plug 'junegunn/fzf.vim'
 
 " git fugitive
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 
 " nerdtree
 Plug 'scrooloose/nerdtree'
@@ -104,13 +107,20 @@ Plug 'vim-scripts/indentpython.vim'
 
 " python
 " Also add PEP8 checking with this nifty little plugin
-Plug 'nvie/vim-flake8'
+Plug 'python-mode/python-mode'
+" Plug 'nvie/vim-flake8'
 
 " multiple-line-editor
 Plug 'terryma/vim-multiple-cursors'
 
 " YCM
 Plug 'Valloric/YouCompleteMe'
+
+" Vue
+Plug 'posva/vim-vue'
+
+" html
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 " }}}
@@ -141,7 +151,7 @@ nnoremap <leader>q :q<cr>
 nnoremap <leader>ev :tabedit $MYVIMRC<cr>
 
 " reload your vimrc
-nnoremap <leader>rv :source $MYVIMRC<cr>
+nnoremap <leader>cv :source $MYVIMRC<cr>
 
 " switch current line with next line
 nnoremap - ddp
@@ -207,7 +217,6 @@ command! Gbranch call fzf#run(
 " only for Files
 let g:fzf_files_options = '--preview "rougify {} | head -'.&lines.'"'
 " fzf insert mode
-"inoremap <c-x><c-k> <plug>(fzf-complete-word)
 "inoremap <c-x><c-f> <plug>(fzf-complete-path)
 "inoremap <c-x><c-j> <plug>(fzf-complete-file-ag)
 "inoremap <c-x><c-l> <plug>(fzf-complete-line)
@@ -234,7 +243,11 @@ function! s:build_go_files()
 endfunction
 
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-	
+"split navigations
+noremap <c-k> <c-w>k
+noremap <c-j> <c-w>j
+noremap <c-l> <c-w>l
+noremap <c-h> <c-w>h	
 
 " Habit breaking arrow keys and esc key ---- {{{
 noremap <Up> <nop>
@@ -268,7 +281,7 @@ let g:go_auto_type_info = 1
 set updatetime=100
 " }}}
 
-" vim-syntastic/syntastic ----{{{
+" vim-python ---{{{
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -280,6 +293,8 @@ let g:syntastic_check_on_wq = 0
 " for python
 let python_highlight_all=1
 
+let g:pymode_python = 'python3'
+
 " }}}
 
 " YCM config {{{
@@ -287,15 +302,21 @@ let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " }}}
 
-" nerdtree config {{{
+" Nerdtree config {{{
+
 nnoremap <leader>t :NERDTreeToggle<cr>
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
 "}}}
 
+" emmet-vim ---- {{{
+"}}}
 
 " source python config
-source ~/.vim/custom/py.vimrc
+" source ~/.vim/custom/py.vimrc
 
 syntax on
 
