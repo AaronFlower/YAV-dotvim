@@ -119,9 +119,6 @@ Plug 'Valloric/YouCompleteMe'
 " Vue
 Plug 'posva/vim-vue'
 
-" html
-Plug 'mattn/emmet-vim'
-
 call plug#end()
 " }}}
 
@@ -294,6 +291,7 @@ let g:syntastic_check_on_wq = 0
 let python_highlight_all=1
 
 let g:pymode_python = 'python3'
+let g:pymode_rope_complete_on_dot = 0
 
 " }}}
 
