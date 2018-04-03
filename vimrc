@@ -116,6 +116,10 @@ Plug 'terryma/vim-multiple-cursors'
 " YCM
 Plug 'Valloric/YouCompleteMe'
 
+" Generic programming
+Plug 'majutsushi/tagbar'
+Plug 'mattn/emmet-vim'
+
 " Vue
 Plug 'posva/vim-vue'
 
