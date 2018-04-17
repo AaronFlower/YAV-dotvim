@@ -58,9 +58,16 @@ set number
 set autowrite
 
 "For tab characters that appear 2-spaces-wide:
-set tabstop=2
-set softtabstop=0 noexpandtab
-set shiftwidth=2
+"set tabstop=4
+"set softtabstop=0 noexpandtab
+"set shiftwidth=4
+
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
 
 "For edit file forget with sudo
 
@@ -166,8 +173,11 @@ inoremap <leader><c-u> <esc>gUiwea
 " Convert word to uppercase in Normal Mode
 nnoremap <leader><c-u> gUiw
 
+" Toggle tAgbar
+nnoremap <leader>a :TagbarToggle<cr>
+
 " Toggle paste mode
-nnoremap <leader>p :set paste!<cr>
+" nnoremap <leader>p :set paste!<cr>
 
 " Wrap word with "
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
@@ -191,6 +201,7 @@ function! FzfOpenFiles()
 	endif
 endfunction
 
+nnoremap <leader>p :Files<cr>
 nnoremap <c-p> :call FzfOpenFiles()<cr>
 inoremap <c-p> :call FzfOpenFiles()<cr>
 nnoremap <c-b> :Buffers<cr>
@@ -226,6 +237,22 @@ let g:fzf_files_options = '--preview "rougify {} | head -'.&lines.'"'
 " noremap <c-n> :cnext<cr>
 " noremap <c-m> :cprevious<cr>
 " nnoremap <leader>a :cclose<cr>
+function! ToggleQuickFix()
+  if exists("g:qwindow")
+    lclose
+    unlet g:qwindow
+  else
+    try
+      lopen 10
+      let g:qwindow = 1
+    catch 
+      echo "No Errors found!"
+    endtry
+  endif
+endfunction
+
+nmap <script> <silent> <leader>cc :call ToggleQuickFix()<CR>
+
 
 " Go
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
@@ -301,6 +328,7 @@ let g:pymode_rope_complete_on_dot = 0
 
 " YCM config {{{
 let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " }}}
 
