@@ -69,6 +69,9 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:.
+set list
+
 "For edit file forget with sudo
 
 " tell vim to keep a backup file
@@ -103,8 +106,18 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 
+" Git gutter
+Plug 'airblade/vim-gitgutter'
+
 " vim comment
 Plug 'tpope/vim-commentary'
+
+" snippets Track the engine.
+Plug 'ervandew/supertab'
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
 
 " nerdtree
 Plug 'scrooloose/nerdtree'
@@ -122,6 +135,7 @@ Plug 'python-mode/python-mode'
 
 " multiple-line-editor
 Plug 'terryma/vim-multiple-cursors'
+Plug 'editorconfig/editorconfig-vim'
 
 " YCM
 Plug 'Valloric/YouCompleteMe'
@@ -177,7 +191,7 @@ inoremap <leader><c-u> <esc>gUiwea
 nnoremap <leader><c-u> gUiw
 
 " Toggle tAgbar
-nnoremap <leader>a :TagbarToggle<cr>
+nnoremap <leader>b :TagbarToggle<cr>
 
 " Toggle paste mode
 " nnoremap <leader>p :set paste!<cr>
@@ -329,11 +343,6 @@ let g:pymode_rope_complete_on_dot = 0
 
 " }}}
 
-" YCM config {{{
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" }}}
 
 " Nerdtree config {{{
 
@@ -345,7 +354,26 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 "}}}
 
+" tagbar ---- {{{
+" }}}
+
 " emmet-vim ---- {{{
+"}}}
+
+" YCM and snippets config {{{
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "}}}
 
 " source python config
@@ -353,3 +381,4 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 syntax on
 
+autocmd FileType vue syntax sync fromstart
