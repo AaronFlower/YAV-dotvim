@@ -218,6 +218,9 @@ function! FzfOpenFiles()
 	endif
 endfunction
 
+" gIt files
+nnoremap <leader>i :GFiles<cr>
+" Files
 nnoremap <leader>p :Files<cr>
 nnoremap <c-p> :call FzfOpenFiles()<cr>
 inoremap <c-p> :call FzfOpenFiles()<cr>
