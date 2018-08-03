@@ -108,6 +108,7 @@ Plug 'tpope/vim-surround'
 
 " Git gutter
 Plug 'airblade/vim-gitgutter'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " vim comment
 Plug 'tpope/vim-commentary'
@@ -135,7 +136,10 @@ Plug 'python-mode/python-mode'
 
 " multiple-line-editor
 Plug 'terryma/vim-multiple-cursors'
-Plug 'editorconfig/editorconfig-vim'
+
+" Don't use editorconfig/editorconfig-vim because it need python support
+" Plug 'editorconfig/editorconfig-vim'
+Plug 'sgur/vim-editorconfig'
 
 " YCM
 Plug 'Valloric/YouCompleteMe'
@@ -217,6 +221,8 @@ function! FzfOpenFiles()
 		call fzf#vim#gitfiles('', fzf#vim#with_preview('right'))
 	endif
 endfunction
+" Search for hidden and git ignored files.
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 " gIt files
 nnoremap <leader>i :GFiles<cr>
@@ -226,7 +232,7 @@ nnoremap <c-p> :call FzfOpenFiles()<cr>
 inoremap <c-p> :call FzfOpenFiles()<cr>
 nnoremap <c-b> :Buffers<cr>
 nnoremap <leader>, :Commands<cr>
-nnoremap <c-g>h :Ag<cr>
+nnoremap <silent> <leader>ag :Ag <C-R><C-W><CR>
 
 " custom fzf commands
 function! s:change_branch(e)
@@ -343,6 +349,9 @@ let python_highlight_all=1
 
 let g:pymode_python = 'python3'
 let g:pymode_rope_complete_on_dot = 0
+" In case for pymode freeze or crash
+let g:pymode_rope = 0
+let g:pymode_rope_lookup_project = 0
 
 " }}}
 
@@ -361,6 +370,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " }}}
 
 " emmet-vim ---- {{{
+let g:user_emmet_leader_key='<c-e>'
 "}}}
 
 " YCM and snippets config {{{
