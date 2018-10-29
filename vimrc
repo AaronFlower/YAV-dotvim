@@ -352,7 +352,7 @@ let g:pymode_rope_complete_on_dot = 0
 " In case for pymode freeze or crash
 let g:pymode_rope = 0
 let g:pymode_rope_lookup_project = 0
-
+let g:pymode_breakpoint = 0 " py-mode become slow in zsh
 " }}}
 
 
