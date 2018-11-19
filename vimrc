@@ -151,6 +151,10 @@ Plug 'mattn/emmet-vim'
 " Vue
 Plug 'posva/vim-vue'
 
+" Go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'AndrewRadev/splitjoin.vim'
+
 call plug#end()
 " }}}
 
@@ -195,7 +199,7 @@ inoremap <leader><c-u> <esc>gUiwea
 nnoremap <leader><c-u> gUiw
 
 " Toggle tAgbar
-nnoremap <leader>b :TagbarToggle<cr>
+" nnoremap <leader>b :TagbarToggle<cr>
 
 " Toggle paste mode
 " nnoremap <leader>p :set paste!<cr>
@@ -230,7 +234,7 @@ nnoremap <leader>i :GFiles<cr>
 nnoremap <leader>p :Files<cr>
 nnoremap <c-p> :call FzfOpenFiles()<cr>
 inoremap <c-p> :call FzfOpenFiles()<cr>
-nnoremap <c-b> :Buffers<cr>
+nnoremap <c-f> :Buffers<cr>
 nnoremap <leader>, :Commands<cr>
 nnoremap <silent> <leader>ag :Ag <C-R><C-W><CR>
 
@@ -260,9 +264,10 @@ let g:fzf_files_options = '--preview "rougify {} | head -'.&lines.'"'
 "inoremap <c-x><c-l> <plug>(fzf-complete-line)
 
 " quickfix
-" noremap <c-n> :cnext<cr>
-" noremap <c-m> :cprevious<cr>
-" nnoremap <leader>a :cclose<cr>
+let g:go_list_type = "quickfix"
+noremap <c-n> :cnext<cr>
+noremap <c-m> :cprevious<cr>
+nnoremap <leader>a :cclose<cr>
 function! ToggleQuickFix()
   if exists("g:qwindow")
     lclose
@@ -277,7 +282,7 @@ function! ToggleQuickFix()
   endif
 endfunction
 
-nmap <script> <silent> <leader>cc :call ToggleQuickFix()<CR>
+" nmap <script> <silent> <leader>cc :call ToggleQuickFix()<CR>
 
 
 " Go
