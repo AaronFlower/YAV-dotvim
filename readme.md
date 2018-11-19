@@ -1,9 +1,21 @@
-## Yet Another Vimrc configuration file.
+# Yet Another Vimrc configuration file.
+
+## How to use?
+
+```
+git clone https://github.com/AaronFlower/YAV-dotvim.git ~/.vim
+ln -s ~/.vim/vimrc ~/.vimrc
+vim +PlugInstall +qall
+```
+
+## Vim Directories Explained
 
 ### ~/.vim/colors/
 
+Vim colors and themes
+
 ### ~/.vim/plugin/
-Vim 每次启动时都会加载执行的脚本。
+Shells to execute when vim start!
 
 ### ~/.vim/ftdetect/
 

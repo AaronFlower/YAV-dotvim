@@ -1,6 +1,6 @@
 " A vimrc file maintained by AaronFlower
 
-echom ">^.^<"
+" echom ">^.^<"
 
 if has('python3')
 	" echom 'python3'
