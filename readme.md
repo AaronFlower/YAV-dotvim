@@ -6,6 +6,7 @@
 git clone https://github.com/AaronFlower/YAV-dotvim.git ~/.vim
 ln -s ~/.vim/vimrc ~/.vimrc
 vim +PlugInstall +qall
+vim +GoInstallBinaries +qall
 ```
 
 ## Vim Directories Explained

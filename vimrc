@@ -86,6 +86,15 @@ set dir=/tmp
 " Save marks when exit
 set viminfo='100,f1
 
+" Triger `autoread` when files changes on disk
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+" Notification after file change
+" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
 " <### vim-plug plugins mananger ###> --- {{{
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
@@ -135,7 +144,7 @@ Plug 'python-mode/python-mode'
 " Plug 'nvie/vim-flake8'
 
 " multiple-line-editor
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 
 " Don't use editorconfig/editorconfig-vim because it need python support
 " Plug 'editorconfig/editorconfig-vim'
@@ -154,6 +163,15 @@ Plug 'posva/vim-vue'
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'AndrewRadev/splitjoin.vim'
+
+" TOML syntax
+Plug 'cespare/vim-toml'
+
+" nginx syntax
+Plug 'chr4/nginx.vim'
+
+" Game
+Plug 'johngrib/vim-game-code-break'
 
 call plug#end()
 " }}}
@@ -290,6 +308,7 @@ autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go set nolist 
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
@@ -335,6 +354,8 @@ let g:go_highlight_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_metalinter_enabled = ['golint', 'errcheck']
 let g:go_metalinter_autosave = 1
+" auto imports
+let g:go_fmt_command = "goimports"
 
 let g:go_auto_type_info = 1
 set updatetime=100
@@ -363,7 +384,7 @@ let g:pymode_breakpoint = 0 " py-mode become slow in zsh
 
 " Nerdtree config {{{
 
-nnoremap <leader>t :NERDTreeToggle<cr>
+nnoremap <leader>n :NERDTreeToggle<cr>
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
