@@ -70,7 +70,7 @@ set shiftwidth=4
 set expandtab
 
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:.
-set list
+" set list
 
 "For edit file forget with sudo
 
@@ -173,8 +173,21 @@ Plug 'chr4/nginx.vim'
 " Game
 Plug 'johngrib/vim-game-code-break'
 
+" Asynchronous Lint Engine
+Plug 'w0rp/ale'
+
 call plug#end()
 " }}}
+"
+
+" Config lint fixing.
+let g:ale_fixers = {
+            \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \ 'javascript': ['prettier', 'eslint'],
+            \}
+
+" Set this variable to 1 to fix files when you save them.
+let g:ale_fix_on_save = 1
 
 " Airline
 let g:airline_theme='luna'
@@ -210,7 +223,7 @@ nnoremap - ddp
 " switch current line with previous line
 nnoremap _ ddkP
 
-" Convert word to uppercase in Insert Mode	
+" Convert word to uppercase in Insert Mode
 inoremap <leader><c-u> <esc>gUiwea
 
 " Convert word to uppercase in Normal Mode
@@ -226,10 +239,10 @@ nnoremap <leader><c-u> gUiw
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 
 
-" Wrap word with ' 
+" Wrap word with '
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 
-" Wrap word with () 
+" Wrap word with ()
 nnoremap <leader>( viw<esc>a)<esc>bi(<esc>lel
 
 " Open file with fzf
@@ -294,7 +307,7 @@ function! ToggleQuickFix()
     try
       lopen 10
       let g:qwindow = 1
-    catch 
+    catch
       echo "No Errors found!"
     endtry
   endif
@@ -308,7 +321,7 @@ autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
-autocmd FileType go set nolist 
+autocmd FileType go set nolist
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
@@ -325,7 +338,7 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 noremap <c-k> <c-w>k
 noremap <c-j> <c-w>j
 noremap <c-l> <c-w>l
-noremap <c-h> <c-w>h	
+noremap <c-h> <c-w>h
 
 " Habit breaking arrow keys and esc key ---- {{{
 noremap <Up> <nop>
