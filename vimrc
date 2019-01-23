@@ -434,3 +434,21 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 syntax on
 
 autocmd FileType vue syntax sync fromstart
+
+" https://damien.pobel.fr/post/configure-neovim-vim-gf-javascript-import/
+" Configuring neovim/vim gf command to resolve JS import/require
+set path=.,src
+set suffixesadd=.js,.jsx
+
+function! LoadMainNodeModule(fname)
+    let nodeModules = "./node_modules/"
+    let packageJsonPath = nodeModules . a:fname . "/package.json"
+
+    if filereadable(packageJsonPath)
+        return nodeModules . a:fname . "/" . json_decode(join(readfile(packageJsonPath))).main
+    else
+        return nodeModules . a:fname
+    endif
+endfunction
+
+set includeexpr=LoadMainNodeModule(v:fname)
