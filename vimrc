@@ -176,6 +176,10 @@ Plug 'johngrib/vim-game-code-break'
 " Asynchronous Lint Engine
 Plug 'w0rp/ale'
 
+" Unite all interfaces
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'Shougo/denite.nvim'
+
 call plug#end()
 " }}}
 "
@@ -265,7 +269,8 @@ nnoremap <leader>i :GFiles<cr>
 nnoremap <leader>p :Files<cr>
 nnoremap <c-p> :call FzfOpenFiles()<cr>
 inoremap <c-p> :call FzfOpenFiles()<cr>
-nnoremap <c-f> :Buffers<cr>
+" disable c-f for buffers, because i don't user buffers too much.
+" nnoremap <c-f> :Buffers<cr>
 nnoremap <leader>, :Commands<cr>
 nnoremap <silent> <leader>ag :Ag <C-R><C-W><CR>
 
@@ -449,3 +454,5 @@ function! LoadMainNodeModule(fname)
 endfunction
 
 set includeexpr=LoadMainNodeModule(v:fname)
+
+source $HOME/.vim/setup/denite.vim
