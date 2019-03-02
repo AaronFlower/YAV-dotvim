@@ -428,9 +428,6 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "}}}
 
-" source python config
-" source ~/.vim/custom/py.vimrc
-
 syntax on
 
 autocmd FileType vue syntax sync fromstart
