@@ -23,6 +23,13 @@ Remember: YCM is a plugin with a compiled component. If you update YCM using Vun
 cd ~/.vim/plugged/YouCompleteMe/
 ./install.py --clang-completer
 ```
+`./install.py ` supports tags. Please note that different option tags need different egine.
+
+`--cs-completer` 	C# support: install Mono
+`--go-completer` 	Go support: install Go
+`--ts-completer` 	JavaScript and TypeScript
+`--rust-completer`	Rust support: install Rust
+`--java-completer`	Java support: install JDK8 (version 8 required)
 
 ## Vim Directories Explained
 
