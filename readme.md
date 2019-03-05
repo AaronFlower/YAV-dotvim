@@ -7,7 +7,13 @@ git clone https://github.com/AaronFlower/YAV-dotvim.git ~/.vim
 ln -s ~/.vim/vimrc ~/.vimrc
 vim +PlugInstall +qall
 vim +GoInstallBinaries +qall
+# Because YouCompleteMe needs installed.
+cd ~/.vim/plugged/YouCompleteMe
+python3 install.py --clang-completer --go-completer --ts-completer --rust-completer
 ```
+
+**Note**: If you don't clone this repository into `~/.vim`, you should link the `repository` to `~/.vim`.
+
 
 ## How update
 
