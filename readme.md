@@ -14,6 +14,26 @@ python3 install.py --clang-completer --go-completer --ts-completer --rust-comple
 
 **Note**: If you don't clone this repository into `~/.vim`, you should link the `repository` to `~/.vim`.
 
+### fzf
+Because, we depends fzf plugin, we should install fzf to complete the vim plugin config.
+
+Please refers to [fzf](https://github.com/junegunn/fzf)
+
+### ag
+Because of following config:
+
+```bash
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+```
+
+we should install `ag`.
+
+### Denite
+
+Because Denite, we should install pynvim
+```
+pip3 install --user pynvim
+```
 
 ## How update
 
