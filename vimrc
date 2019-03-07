@@ -180,6 +180,8 @@ Plug 'w0rp/ale'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'Shougo/denite.nvim'
 
+Plug 'connorholyday/vim-snazzy'
+
 call plug#end()
 " }}}
 "
@@ -435,6 +437,9 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 syntax on
 
+" Set show linebreak when line is warp. Don't miss the last escape space.
+let &showbreak = '↪ '
+
 autocmd FileType vue syntax sync fromstart
 
 " https://damien.pobel.fr/post/configure-neovim-vim-gf-javascript-import/
@@ -456,3 +461,5 @@ endfunction
 set includeexpr=LoadMainNodeModule(v:fname)
 
 source $HOME/.vim/setup/denite.vim
+
+color snazzy
