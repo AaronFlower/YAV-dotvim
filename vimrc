@@ -162,6 +162,7 @@ Plug 'posva/vim-vue'
 
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" gS / gJ -- split / join
 Plug 'AndrewRadev/splitjoin.vim'
 
 " TOML syntax
@@ -463,3 +464,8 @@ set includeexpr=LoadMainNodeModule(v:fname)
 source $HOME/.vim/setup/denite.vim
 
 color snazzy
+
+augroup quickfix
+    autocmd!
+    autocmd FileType qf setlocal wrap
+augroup END
