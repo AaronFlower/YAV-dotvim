@@ -186,6 +186,10 @@ Plug 'Shougo/denite.nvim'
 
 Plug 'connorholyday/vim-snazzy'
 
+
+" self plugin potion-vim
+Plug './plugged/potion-vim'
+
 call plug#end()
 " }}}
 "
