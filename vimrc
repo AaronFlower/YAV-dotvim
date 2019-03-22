@@ -54,6 +54,9 @@ endif
 " Editor settings
 set number
 
+set ignorecase
+set smartcase
+
 " Autowrite that writes the content of the file automatically if you call :make
 set autowrite
 
@@ -243,14 +246,16 @@ nnoremap <leader><c-u> gUiw
 " nnoremap <leader>p :set paste!<cr>
 
 " Wrap word with "
-nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
-
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lela
 
 " Wrap word with '
-nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lela
 
 " Wrap word with ()
-nnoremap <leader>( viw<esc>a)<esc>bi(<esc>lel
+nnoremap <leader>( viw<esc>a)<esc>bi(<esc>lela
+
+" Wrap word with <>
+nnoremap <leader>< viw<esc>a><esc>bi<<esc>lela
 
 " Open file with fzf
 function! FzfOpenFiles()
@@ -458,6 +463,9 @@ function! LoadMainNodeModule(fname)
         return nodeModules . a:fname
     endif
 endfunction
+
+" iabbrev
+iabbrev 3` ```
 
 set includeexpr=LoadMainNodeModule(v:fname)
 
