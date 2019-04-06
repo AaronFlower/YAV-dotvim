@@ -165,7 +165,7 @@ Plug 'mattn/emmet-vim'
 Plug 'posva/vim-vue'
 
 " Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " gS / gJ -- split / join
 Plug 'AndrewRadev/splitjoin.vim'
 
