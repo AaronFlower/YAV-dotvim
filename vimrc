@@ -140,6 +140,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'StanAngeloff/php.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'vim-scripts/indentpython.vim'
+" Plug 'shawncplus/phpcomplete.vim'
 
 " python
 " Also add PEP8 checking with this nifty little plugin
@@ -189,6 +190,7 @@ Plug 'connorholyday/vim-snazzy'
 
 " self plugin potion-vim
 Plug './plugged/potion-vim'
+" Plug './plugged/vim-sftp'
 
 call plug#end()
 " }}}
@@ -209,7 +211,7 @@ let g:airline_theme='luna'
 " molokai color scheme
 let g:rehash256=1
 let g:molokai_original=1
-color molokai
+silent! color molokai
 
 " <### Editor KeyMap Begin###> ----{{{
 " Set mapleader, maplocalleader
@@ -471,11 +473,11 @@ endfunction
 " iabbrev
 iabbrev 3` ```
 
-set includeexpr=LoadMainNodeModule(v:fname)
+" set includeexpr=LoadMainNodeModule(v:fname)
 
 source $HOME/.vim/setup/denite.vim
 
-color snazzy
+silent! color snazzy
 
 augroup quickfix
     autocmd!
