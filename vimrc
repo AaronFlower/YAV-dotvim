@@ -111,7 +111,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'fatih/molokai'
 
 " fzf
-Plug '/usr/local/opt/fzf'
+Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 
 " git fugitive
@@ -189,7 +189,7 @@ Plug 'connorholyday/vim-snazzy'
 
 
 " self plugin potion-vim
-Plug './plugged/potion-vim'
+" Plug './plugged/potion-vim'
 " Plug './plugged/vim-sftp'
 
 call plug#end()
