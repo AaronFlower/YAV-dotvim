@@ -483,3 +483,6 @@ augroup quickfix
     autocmd!
     autocmd FileType qf setlocal wrap
 augroup END
+
+" load ctags
+set tags+=~/systags
