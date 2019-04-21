@@ -165,7 +165,7 @@ Plug 'mattn/emmet-vim'
 Plug 'posva/vim-vue'
 
 " Go
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " gS / gJ -- split / join
 Plug 'AndrewRadev/splitjoin.vim'
 
@@ -187,6 +187,7 @@ Plug 'Shougo/denite.nvim'
 
 Plug 'connorholyday/vim-snazzy'
 
+Plug 'skammer/vim-css-color'
 
 " self plugin potion-vim
 " Plug './plugged/potion-vim'
@@ -332,7 +333,7 @@ function! ToggleQuickFix()
   endif
 endfunction
 
-" nmap <script> <silent> <leader>cc :call ToggleQuickFix()<CR>
+nmap <script> <silent> <leader><space> :call ToggleQuickFix()<CR>
 
 
 " Go
