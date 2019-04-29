@@ -1,4 +1,4 @@
-# Yet Another Vimrc configuration file.
+j Yet Another Vimrc configuration file.
 
 ## How to use?
 
@@ -56,6 +56,19 @@ cd ~/.vim/plugged/YouCompleteMe/
 `--ts-completer` 	JavaScript and TypeScript
 `--rust-completer`	Rust support: install Rust
 `--java-completer`	Java support: install JDK8 (version 8 required)
+
+### YCM for C/C++
+
+在 C/C++ 的项目中使用 YCM, 我们需要使用 `ycm_extra_conf.py` 文件来配置下环境信息。最简单的是返回基本的 flags.
+
+```python
+def Settings( **kwargs ):
+  return {
+    'flags': [ '-x', 'c++', '-Wall', '-Wextra', '-Werror' ],
+  }
+```
+
+另外可以使用： `:YcmDebugInfo` 来调试信息, 查看当前加载的配置文件以及相应的 flags 信息是否正确。
 
 
 ### 2. Ale-lint
