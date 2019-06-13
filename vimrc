@@ -55,8 +55,11 @@ if has('mouse')
 endif
 
 " Editor settings
+
+" Add line numbers
 set number
 
+" Deal with upper/lower better
 set ignorecase
 set smartcase
 
@@ -75,8 +78,8 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:.
 " set list
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:.
 
 "For edit file forget with sudo
 
