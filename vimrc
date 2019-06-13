@@ -2,6 +2,9 @@
 
 " echom ">^.^<"
 
+" Allow yank to go to system clipboard
+set clipboard=unnamed
+
 if has('python3')
 	" echom 'python3'
 endif
@@ -166,6 +169,10 @@ Plug 'mattn/emmet-vim'
 " Vue
 Plug 'posva/vim-vue'
 
+" typescript
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " gS / gJ -- split / join
@@ -193,7 +200,7 @@ Plug 'skammer/vim-css-color'
 
 " self plugin potion-vim
 " Plug './plugged/potion-vim'
-" Plug './plugged/vim-sftp'
+Plug './plugged/vim-sftp'
 
 call plug#end()
 " }}}
@@ -288,6 +295,7 @@ nnoremap <c-p> :call FzfOpenFiles()<cr>
 inoremap <c-p> :call FzfOpenFiles()<cr>
 " disable c-f for buffers, because i don't user buffers too much.
 " nnoremap <c-f> :Buffers<cr>
+nnoremap <leader>f :Buffers<cr>
 nnoremap <leader>, :Commands<cr>
 nnoremap <silent> <leader>ag :Ag <C-R><C-W><CR>
 
@@ -456,6 +464,9 @@ syntax on
 let &showbreak = '↪ '
 
 autocmd FileType vue syntax sync fromstart
+
+" typescript prettier
+" autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
 " https://damien.pobel.fr/post/configure-neovim-vim-gf-javascript-import/
 " Configuring neovim/vim gf command to resolve JS import/require
