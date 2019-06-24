@@ -118,7 +118,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'fatih/molokai'
 
 " fzf
-Plug '~/.fzf'
+" Plug '~/.fzf'
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " git fugitive
