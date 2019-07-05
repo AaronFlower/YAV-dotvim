@@ -34,6 +34,10 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
+"Color Columns
+set colorcolumn=80
+highlight ColorColumn ctermbg=10
+
 " set for bracketed paste mode
 if &term =~ "xterm.*"
     let &t_ti = &t_ti . "\e[?2004h"
@@ -116,6 +120,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " molokai theme
 Plug 'fatih/molokai'
+Plug 'altercation/vim-colors-solarized'
 
 " fzf
 " Plug '~/.fzf'
@@ -223,9 +228,9 @@ let g:ale_fix_on_save = 1
 let g:airline_theme='luna'
 
 " molokai color scheme
-let g:rehash256=1
-let g:molokai_original=1
-silent! color molokai
+" let g:rehash256=1
+" let g:molokai_original=1
+" silent! color molokai
 
 " <### Editor KeyMap Begin###> ----{{{
 " Set mapleader, maplocalleader
@@ -496,6 +501,7 @@ iabbrev 3` ```
 source $HOME/.vim/setup/denite.vim
 
 silent! color snazzy
+silent! color solarized
 
 augroup quickfix
     autocmd!
