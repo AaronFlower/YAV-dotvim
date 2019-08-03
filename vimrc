@@ -265,7 +265,7 @@ inoremap <leader><c-u> <esc>gUiwea
 nnoremap <leader><c-u> gUiw
 
 " Toggle tAgbar
-" nnoremap <leader>b :TagbarToggle<cr>
+nnoremap <leader>m :TagbarToggle<cr>
 
 " Toggle paste mode
 " nnoremap <leader>p :set paste!<cr>
@@ -509,4 +509,4 @@ augroup quickfix
 augroup END
 
 " load ctags
-set tags+=~/systags
+set tags+=~/.systags
