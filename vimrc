@@ -209,7 +209,7 @@ Plug 'skammer/vim-css-color'
 
 " self plugin potion-vim
 " Plug './plugged/potion-vim'
-Plug './plugged/vim-sftp'
+" Plug './plugged/vim-sftp'
 
 call plug#end()
 " }}}
@@ -238,8 +238,8 @@ let mapleader=","
 let maplocalleader=","
 
 " insert mode user jk to ESC
-inoremap jk <esc>
-inoremap <esc> <nop>
+" inoremap jk <esc>
+" inoremap <esc> <nop>
 
 " save your file
 nnoremap <leader>s :w<cr>
