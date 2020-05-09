@@ -123,8 +123,7 @@ Plug 'fatih/molokai'
 Plug 'altercation/vim-colors-solarized'
 
 " fzf
-" Plug '~/.fzf'
-Plug '/usr/local/opt/fzf'
+Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 
 " git fugitive
